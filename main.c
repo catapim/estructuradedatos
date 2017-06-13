@@ -10,6 +10,7 @@ struct nodo {
     struct nodo* next; /* el proximo */
 };
 struct nodo* head = NULL;
+struct nodo *current = NULL;
 
 void agregar_visita(char url[]) {
      printf("\n");
@@ -22,15 +23,16 @@ void agregar_visita(char url[]) {
          /* es el primer nodo de la lista enlazada, entonces se escribe head */
         printf(nueva_visita->url);
         head=nuevo_nodo;
+        head->next=NULL;
      } else {
         /* recorre la lista enlazada para encontrar el ultimo nodo y agregarle el nuevo nodo */
-        struct nodo *current = head;
-        printf("AAAA");
+        printf(nuevo_nodo->data->url);
+        current=head;
         while(current->next!=NULL) {
             // printf(current->data->url);
             current=current->next;
         }
-        current->next=nuevo_nodo;
+        // current->next=nuevo_nodo;
      }
 }
 void imprimir_todas_las_visitas() {
