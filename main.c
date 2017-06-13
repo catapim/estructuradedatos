@@ -21,32 +21,25 @@ void agregar_visita(char url[]) {
      
      if(head==NULL) {
          /* es el primer nodo de la lista enlazada, entonces se escribe head */
-        printf(nueva_visita->url);
-        head=nuevo_nodo;
-        head->next=NULL;
+        nuevo_nodo->next=NULL;
      } else {
-        /* recorre la lista enlazada para encontrar el ultimo nodo y agregarle el nuevo nodo */
-        printf(nuevo_nodo->data->url);
-        current=head;
-        while(current->next!=NULL) {
-            // printf(current->data->url);
-            current=current->next;
-        }
-        // current->next=nuevo_nodo;
+         /* nuevo nodo ahora es el HEAD y el anterior head es NEXT del nuevo nodo */
+        nuevo_nodo->next=head;
      }
+    head=nuevo_nodo;
 }
 void imprimir_todas_las_visitas() {
             
         printf("sitios visitados: ");
         printf("\n");
         struct nodo* current = head;
-        while(current!=NULL)
+        while(current->next!=NULL)
         {
             // do something
-
-            current= current->next;
+            printf(current->data->url);
+            current=current->next;
+            printf("\n");
         }
-        printf("\n");
 
 }
 int main()
@@ -61,7 +54,7 @@ int main()
     agregar_visita("http://dogs.com");
     agregar_visita("http://people.com");
 
-    // imprimir_todas_las_visitas();
+    imprimir_todas_las_visitas();
     return 0;
 }
 
